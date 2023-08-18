@@ -10,12 +10,8 @@ export default function IndexPage({ artists, releases }) {
 				{artists.length > 0 && (
 					<ul>
 						{artists.map(({ _id, name }) => (
-							<>
-								<h2>Artist</h2>
-								<li style={{ textTransform: "uppercase" }} key={_id}>
-									{name}
-								</li>
-								<h4>Releases</h4>
+							<li key={_id}>
+								<h2 style={{ textTransform: "uppercase" }}>{name}</h2>
 								{releases.length > 0 && (
 									<ul>
 										{releases
@@ -25,7 +21,7 @@ export default function IndexPage({ artists, releases }) {
 											))}
 									</ul>
 								)}
-							</>
+							</li>
 						))}
 					</ul>
 				)}
