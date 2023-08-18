@@ -1,13 +1,18 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
-# Dependencies
-/node_modules
-/.pnp
-.pnp.js
+node_modules
+target
+public
+.cache
+.vscode
+.DS_Store
+.idea
+.next
+yarn-error.log
+npm-debug.log
 
 # Compiled Code
 /dist
-
 
 # Logs
 /logs
