@@ -1,5 +1,25 @@
 import { createClient } from "next-sanity";
 
+const client = createClient({
+	projectId: "923bgilp",
+	dataset: "production",
+	apiVersion: "2023-08-18",
+	useCdn: false
+});
+
+async function getResources() {
+	const artists = await client.fetch(
+		`*[_type == "artist"] { _id, name, "imageUrl": image.asset->url } `
+	);
+	const releases = await client.fetch(
+		`*[_type == "release"] { _id, name, artist->{ _id }, "imageUrl": image.asset->url }`
+	);
+	return {
+		artists,
+		releases
+	};
+}
+
 const Releases = ({ releases, artistId }) => {
 	return (
 		<ul>
@@ -28,12 +48,10 @@ const Releases = ({ releases, artistId }) => {
 	);
 };
 
-export default function IndexPage({ artists, releases }) {
+export default async function IndexPage() {
+	const { artists, releases } = await getResources();
 	return (
 		<>
-			<header>
-				<h1>Giba Gab Records</h1>
-			</header>
 			<main>
 				{artists.length > 0 && (
 					<ul>
@@ -43,9 +61,9 @@ export default function IndexPage({ artists, releases }) {
 								<li key={_id}>
 									<h2 style={{ textTransform: "uppercase" }}>{artistName}</h2>
 									<img src={artistImageUrl} alt={artistName} />
-									{releases.length > 0 && (
+									{/* {releases.length > 0 && (
 										<Releases releases={releases} artistId={_id} />
-									)}
+									)} */}
 								</li>
 							);
 						})}
@@ -54,27 +72,4 @@ export default function IndexPage({ artists, releases }) {
 			</main>
 		</>
 	);
-}
-
-const client = createClient({
-	projectId: "923bgilp",
-	dataset: "production",
-	apiVersion: "2023-08-18",
-	useCdn: false
-});
-
-export async function getStaticProps() {
-	const artists = await client.fetch(
-		`*[_type == "artist"] { _id, name, "imageUrl": image.asset->url } `
-	);
-	const releases = await client.fetch(
-		`*[_type == "release"] { _id, name, artist->{ _id }, "imageUrl": image.asset->url }`
-	);
-
-	return {
-		props: {
-			artists,
-			releases
-		}
-	};
 }
