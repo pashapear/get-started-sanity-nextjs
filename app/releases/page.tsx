@@ -1,5 +1,6 @@
 import { Box, Flex, Grid, Heading } from "@radix-ui/themes";
 import client from "../../sanity/client";
+import { ImageLinkCard } from "../../components/ImageLinkCard";
 
 async function getResources() {
 	const releases = await client.fetch(
@@ -15,16 +16,14 @@ export default async function Releases() {
 	return (
 		<Grid columns="3" gap="9">
 			{releases.map(({ _id, imageUrl, name }) => {
-				const releaseImageUrl = `${imageUrl}?w=300`;
+				const releaseImageUrl = `${imageUrl}?w=500`;
 				return (
-					<Box key={_id}>
-						<Heading>{name}</Heading>
-						<Flex direction="column" gap="9">
-							<Box>
-								<img src={releaseImageUrl} alt={name} />
-							</Box>
-						</Flex>
-					</Box>
+					<ImageLinkCard
+						id={_id}
+						imageUrl={releaseImageUrl}
+						name={name}
+						url="#"
+					/>
 				);
 			})}
 		</Grid>
