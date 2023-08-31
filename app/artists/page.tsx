@@ -12,11 +12,11 @@ async function getResources() {
 export default async function IndexPage() {
 	const { artists } = await getResources();
 	return (
-		<Grid columns="2" gap="5">
+		<Grid columns="3" gap="9">
 			{artists.length > 0 &&
 				artists.map(({ _id, slug, name: artistName, imageUrl }) => {
 					const { current: artistSlug } = slug;
-					const artistImageUrl = `${imageUrl}?h=500`;
+					const artistImageUrl = `${imageUrl}?w=500`;
 					const artistLink = `/artists/${artistSlug}?id=${_id}`;
 					return (
 						<ImageLinkCard
