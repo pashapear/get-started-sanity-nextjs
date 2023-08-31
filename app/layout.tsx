@@ -1,10 +1,11 @@
 // https://nextjs.org/docs/basic-features/built-in-css-support#adding-a-global-stylesheet
 import Link from "next/link";
 import "../styles.css";
-import styles from "./app.module.css";
+import { Box, Flex, Heading, Theme, ThemePanel } from "@radix-ui/themes";
+import "@radix-ui/themes/styles.css";
 
 export const metadata = {
-	title: "Giba Gab",
+	title: "Gibba Gab",
 	description: "Record label"
 };
 
@@ -16,16 +17,23 @@ export default function RootLayout({
 	return (
 		<html lang="en">
 			<body>
-				<header>
-					<nav className={styles.globalNav}>
-						<Link href="/">
-							<h1>Giba Gab Records</h1>
-						</Link>
-						<Link href="/artists">Artists</Link>
-						<Link href="/releases">Releases</Link>
-					</nav>
-				</header>
-				<main>{children}</main>
+				<Theme>
+					<header>
+						<Flex gap="5" align="end">
+							<Link href="/">
+								<Heading as="h1" size="4">
+									Gibba Gab Records
+								</Heading>
+							</Link>
+							<Link href="/artists">Artists</Link>
+							<Link href="/releases">Releases</Link>
+						</Flex>
+					</header>
+
+					<main>{children}</main>
+
+					{/* <ThemePanel /> */}
+				</Theme>
 			</body>
 		</html>
 	);
