@@ -13,11 +13,15 @@ export const ImageLinkCard = ({
 	name: any;
 }) => {
 	return (
-		<Link href={url}>
+		<Link href={url} key={id}>
 			<Box
-				key={id}
 				position="relative"
-				p="3"
+				p={{
+					initial: "2",
+					xs: "3",
+					md: "5",
+					xl: "7"
+				}}
 				style={{ border: "2px solid black" }}
 			>
 				<AspectRatio ratio={1 / 1}>
@@ -35,6 +39,11 @@ export const ImageLinkCard = ({
 					<Heading
 						as="h2"
 						style={{ textTransform: "uppercase", fontWeight: "normal" }}
+						size={{
+							initial: "1",
+							md: "5",
+							xl: "7"
+						}}
 					>
 						{name}
 					</Heading>

@@ -1,6 +1,6 @@
 import client from "../../sanity/client";
-import { Grid } from "@radix-ui/themes";
 import { ImageLinkCard } from "../../components/ImageLinkCard";
+import { CardGridLayout } from "../../components/CardGridLayout";
 
 async function getResources() {
 	const artists = await client.fetch(
@@ -12,7 +12,7 @@ async function getResources() {
 export default async function IndexPage() {
 	const { artists } = await getResources();
 	return (
-		<Grid columns="3" gap="9">
+		<CardGridLayout>
 			{artists.length > 0 &&
 				artists.map(({ _id, slug, name: artistName, imageUrl }) => {
 					const { current: artistSlug } = slug;
@@ -27,6 +27,6 @@ export default async function IndexPage() {
 						/>
 					);
 				})}
-		</Grid>
+		</CardGridLayout>
 	);
 }

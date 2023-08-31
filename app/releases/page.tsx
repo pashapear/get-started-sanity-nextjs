@@ -1,6 +1,7 @@
 import { Box, Flex, Grid, Heading } from "@radix-ui/themes";
 import client from "../../sanity/client";
 import { ImageLinkCard } from "../../components/ImageLinkCard";
+import { CardGridLayout } from "../../components/CardGridLayout";
 
 async function getResources() {
 	const releases = await client.fetch(
@@ -14,7 +15,7 @@ async function getResources() {
 export default async function Releases() {
 	const { releases } = await getResources();
 	return (
-		<Grid columns="3" gap="9">
+		<CardGridLayout>
 			{releases.map(({ _id, imageUrl, name }) => {
 				const releaseImageUrl = `${imageUrl}?w=500`;
 				return (
@@ -26,6 +27,6 @@ export default async function Releases() {
 					/>
 				);
 			})}
-		</Grid>
+		</CardGridLayout>
 	);
 }
