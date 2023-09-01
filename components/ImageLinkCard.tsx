@@ -40,7 +40,7 @@ export const ImageLinkCard = ({
 						as="h2"
 						style={{ textTransform: "uppercase", fontWeight: "normal" }}
 						size={{
-							initial: "1",
+							initial: "3",
 							md: "5",
 							xl: "7"
 						}}
