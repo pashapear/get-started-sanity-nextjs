@@ -5,15 +5,17 @@ export const ImageLinkCard = ({
 	url,
 	id,
 	imageUrl,
-	name
+	name,
+	target
 }: {
 	url: string;
 	id: any;
 	imageUrl: string;
 	name: any;
+	target?: string;
 }) => {
 	return (
-		<Link href={url} key={id}>
+		<Link href={url} key={id} target={target ?? "_self"}>
 			<Box
 				position="relative"
 				p={{

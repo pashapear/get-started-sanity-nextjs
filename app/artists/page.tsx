@@ -1,6 +1,7 @@
 import client from "../../sanity/client";
 import { ImageLinkCard } from "../../components/ImageLinkCard";
 import { CardGridLayout } from "../../components/CardGridLayout";
+import { Artist } from "../../types";
 
 async function getResources() {
 	const artists = await client.fetch(
@@ -14,7 +15,7 @@ export default async function IndexPage() {
 	return (
 		<CardGridLayout>
 			{artists.length > 0 &&
-				artists.map(({ _id, slug, name: artistName, imageUrl }) => {
+				artists.map(({ _id, slug, name: artistName, imageUrl }: Artist) => {
 					const { current: artistSlug } = slug;
 					const artistImageUrl = `${imageUrl}?w=500`;
 					const artistLink = `/artists/${artistSlug}?id=${_id}`;
