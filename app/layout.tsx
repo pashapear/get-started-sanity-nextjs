@@ -17,7 +17,7 @@ export default async function RootLayout({
 }) {
 	const { organizations } = await getOrganizations();
 
-	const { name, title, subtitle } = organizations?.[0];
+	const { name } = organizations?.[0];
 	return (
 		<html lang="en">
 			<head>
