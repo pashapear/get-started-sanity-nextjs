@@ -1,5 +1,5 @@
 import { Box, Flex, Grid, Heading } from "@radix-ui/themes";
-import client from "../../sanity/client";
+import client from "../../data/client";
 import { ImageLinkCard } from "../../components/ImageLinkCard";
 import { CardGridLayout } from "../../components/CardGridLayout";
 import { Release } from "../../types";

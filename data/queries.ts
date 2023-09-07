@@ -1,4 +1,4 @@
-import client from "../sanity/client";
+import client from "./client";
 
 export async function getOrganizations() {
 	const organizations = await client.fetch(

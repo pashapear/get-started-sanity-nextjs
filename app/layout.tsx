@@ -3,7 +3,7 @@ import Link from "next/link";
 import "../styles.css";
 import { Flex, Heading, Theme, ThemePanel } from "@radix-ui/themes";
 import "@radix-ui/themes/styles.css";
-import { getOrganizations } from "../sanity/queries";
+import { getOrganizations } from "../data/queries";
 
 export const metadata = {
 	title: "Gibba Gab",

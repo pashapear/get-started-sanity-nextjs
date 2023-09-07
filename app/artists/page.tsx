@@ -1,7 +1,7 @@
 import { ImageLinkCard } from "../../components/ImageLinkCard";
 import { CardGridLayout } from "../../components/CardGridLayout";
 import { Artist } from "../../types";
-import { getArtists } from "../../sanity/queries";
+import { getArtists } from "../../data/queries";
 
 export default async function IndexPage() {
 	const { artists } = await getArtists();

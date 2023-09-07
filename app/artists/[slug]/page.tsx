@@ -2,7 +2,7 @@ import { AspectRatio, Box, Flex, Grid, Heading, Text } from "@radix-ui/themes";
 import { Release } from "../../../types";
 import { ImageLinkCard } from "../../../components/ImageLinkCard";
 import { CardGridLayout } from "../../../components/CardGridLayout";
-import { getArtist, getReleases } from "../../../sanity/queries";
+import { getArtist, getReleases } from "../../../data/queries";
 
 const Releases = ({
 	releases,
