@@ -1,22 +1,8 @@
 import { AspectRatio, Box, Flex, Grid, Heading, Text } from "@radix-ui/themes";
-import client from "../../../sanity/client";
 import { Release } from "../../../types";
 import { ImageLinkCard } from "../../../components/ImageLinkCard";
 import { CardGridLayout } from "../../../components/CardGridLayout";
-
-async function getResources(artistId: string) {
-	const artists = await client.fetch(
-		`*[_type == "artist" && _id == "${artistId}"] { _id, name, bio, "imageUrl": image.asset->url } `
-	);
-	const releases = await client.fetch(
-		`*[_type == "release"] { _id, name, artist->{ _id }, slug, links, "imageUrl": image.asset->url }`
-	);
-
-	return {
-		artist: artists?.[0],
-		releases
-	};
-}
+import { getArtist, getReleases } from "../../../sanity/queries";
 
 const Releases = ({
 	releases,
@@ -54,7 +40,8 @@ export default async function Artist({
 	searchParams: { id: string };
 }) {
 	const { id: artistId } = searchParams;
-	const { releases, artist } = await getResources(artistId);
+	const { artist } = await getArtist(artistId);
+	const { releases } = await getReleases();
 	const { _id, name: artistName, imageUrl, bio } = artist;
 	const artistImageUrl = `${imageUrl}?w=900`;
 

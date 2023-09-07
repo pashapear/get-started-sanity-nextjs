@@ -1,17 +1,10 @@
-import client from "../../sanity/client";
 import { ImageLinkCard } from "../../components/ImageLinkCard";
 import { CardGridLayout } from "../../components/CardGridLayout";
 import { Artist } from "../../types";
-
-async function getResources() {
-	const artists = await client.fetch(
-		`*[_type == "artist"] { _id, name, slug, "imageUrl": image.asset->url } `
-	);
-	return { artists };
-}
+import { getArtists } from "../../sanity/queries";
 
 export default async function IndexPage() {
-	const { artists } = await getResources();
+	const { artists } = await getArtists();
 	return (
 		<CardGridLayout>
 			{artists.length > 0 &&
