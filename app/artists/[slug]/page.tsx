@@ -46,15 +46,18 @@ export default async function Artist({
 	const artistImageUrl = `${imageUrl}?w=900`;
 
 	return (
-		<Grid columns="1fr 3fr" key={_id}>
-			<Flex direction="column" gap="5">
+		<Grid columns="1fr 3fr" gap="2" key={_id}>
+			<Flex direction="column" gap="5" p="2" className="content">
 				<Heading as="h1" style={{ textTransform: "uppercase" }}>
 					{artistName}
 				</Heading>
-
 				<Text as="p">{bio}</Text>
 			</Flex>
-			<Flex direction="column" gap="5" style={{ minWidth: "50vw" }}>
+			<Flex
+				direction="column"
+				gap="5"
+				style={{ minWidth: "50vw", maxWidth: "30rem" }}
+			>
 				<AspectRatio ratio={2 / 1}>
 					<img
 						src={artistImageUrl}

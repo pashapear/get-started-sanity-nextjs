@@ -1,8 +1,14 @@
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap");
+
 body {
 	background-color: #f1f3f6;
 	margin: 0;
 	width: 100vw;
 	height: 100vh;
+}
+
+main {
+	max-width: 70rem;
 }
 
 h1,
@@ -12,7 +18,7 @@ h4,
 h5,
 h6,
 p {
-	color: #fff;
+	color: #000;
 }
 
 header {
@@ -33,6 +39,8 @@ header a:visited {
 	min-height: 100vh;
 	display: flex;
 	flex-direction: column;
+	--default-font-family: "Quicksand", sans-serif;
+	background-image: url("public/assets/ocean.jpeg");
 }
 
 main {
@@ -67,15 +75,17 @@ a:visited {
 }
 
 a:hover {
-	text-decoration: underline;
+	font-weight: 500;
+	/* text-decoration: underline; */
+	/* cursor: url("public/assets/pug.cur"), auto; */
 }
 
 .content {
 	/* From https://css.glass */
-	/* background: rgba(255, 255, 255, 0.26);
+	background: rgba(255, 255, 255, 0.26);
 	border-radius: 0.25rem;
 	box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
 	backdrop-filter: blur(12.2px);
-	-webkit-backdrop-filter: blur(12.2px); */
-	background-color: #000;
+	-webkit-backdrop-filter: blur(12.2px);
+	/* background-color: #000; */
 }

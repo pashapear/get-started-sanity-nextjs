@@ -1,5 +1,7 @@
+"use client";
+
 import Link from "next/link";
-import { AspectRatio, Box, Heading } from "@radix-ui/themes";
+import { AspectRatio, Box, Flex, Heading } from "@radix-ui/themes";
 
 export const ImageLinkCard = ({
 	url,
@@ -16,7 +18,9 @@ export const ImageLinkCard = ({
 }) => {
 	return (
 		<Link href={url} key={id} target={target ?? "_self"}>
-			<Box
+			<Flex
+				direction="column"
+				gap="3"
 				className="content"
 				position="relative"
 				p={{
@@ -25,6 +29,7 @@ export const ImageLinkCard = ({
 					md: "5",
 					xl: "7"
 				}}
+				style={{ minHeight: "100%" }}
 			>
 				<AspectRatio ratio={1 / 1}>
 					<img
@@ -37,7 +42,12 @@ export const ImageLinkCard = ({
 						}}
 					/>
 				</AspectRatio>
-				<Box style={{ textAlign: "center" }}>
+				<Box
+					style={{
+						textAlign: "center",
+						textOverflow: "ellipsis"
+					}}
+				>
 					<Heading
 						as="h2"
 						style={{ textTransform: "uppercase", fontWeight: "normal" }}
@@ -50,7 +60,7 @@ export const ImageLinkCard = ({
 						{name}
 					</Heading>
 				</Box>
-			</Box>
+			</Flex>
 		</Link>
 	);
 };
