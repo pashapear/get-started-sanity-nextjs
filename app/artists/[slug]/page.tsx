@@ -52,7 +52,7 @@ export default async function Artist({
 					{artistName}
 				</Heading>
 
-				<Text>{bio}</Text>
+				<Text as="p">{bio}</Text>
 			</Flex>
 			<Flex direction="column" gap="5" style={{ minWidth: "50vw" }}>
 				<AspectRatio ratio={2 / 1}>

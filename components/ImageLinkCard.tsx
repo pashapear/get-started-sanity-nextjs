@@ -17,6 +17,7 @@ export const ImageLinkCard = ({
 	return (
 		<Link href={url} key={id} target={target ?? "_self"}>
 			<Box
+				className="content"
 				position="relative"
 				p={{
 					initial: "2",
@@ -24,7 +25,6 @@ export const ImageLinkCard = ({
 					md: "5",
 					xl: "7"
 				}}
-				style={{ border: "2px solid black" }}
 			>
 				<AspectRatio ratio={1 / 1}>
 					<img

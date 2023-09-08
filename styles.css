@@ -1,16 +1,32 @@
-@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&family=Inter:wght@400;600&display=swap");
-
 body {
-	font-family: "Inter", sans-serif;
 	background-color: #f1f3f6;
 	margin: 0;
 	width: 100vw;
 	height: 100vh;
 }
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+	color: #fff;
+}
+
 header {
 	background-color: #fff;
 	padding: 1rem;
+}
+
+header a {
+	color: #000;
+	text-decoration: none;
+}
+
+header a:visited {
+	color: #000;
 }
 
 .radix-themes[data-is-root-theme="true"] {
@@ -42,14 +58,24 @@ li {
 }
 
 a {
-	color: #000;
+	color: #fff;
 	text-decoration: none;
 }
 
 a:visited {
-	color: #000;
+	color: #fff;
 }
 
 a:hover {
 	text-decoration: underline;
+}
+
+.content {
+	/* From https://css.glass */
+	/* background: rgba(255, 255, 255, 0.26);
+	border-radius: 0.25rem;
+	box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+	backdrop-filter: blur(12.2px);
+	-webkit-backdrop-filter: blur(12.2px); */
+	background-color: #000;
 }

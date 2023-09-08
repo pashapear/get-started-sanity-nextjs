@@ -1,9 +1,11 @@
 // https://nextjs.org/docs/basic-features/built-in-css-support#adding-a-global-stylesheet
 import Link from "next/link";
-import "../styles.css";
 import { Flex, Heading, Theme, ThemePanel } from "@radix-ui/themes";
 import "@radix-ui/themes/styles.css";
+import "../theme-config.css";
+import "../styles.css";
 import { getOrganizations } from "../data/queries";
+import { CubeFieldViewPort } from "../components/animations/CubeField";
 
 export const metadata = {
 	title: "Gibba Gab",
@@ -28,7 +30,7 @@ export default async function RootLayout({
 					<header>
 						<Flex gap="5" align="end">
 							<Link href="/">
-								<Heading as="h1" size="4">
+								<Heading as="h1" size="4" style={{ color: "black" }}>
 									{name}
 								</Heading>
 							</Link>
@@ -36,8 +38,10 @@ export default async function RootLayout({
 							<Link href="/releases">Releases</Link>
 						</Flex>
 					</header>
-
-					<main>{children}</main>
+					<main>
+						{children}
+						<CubeFieldViewPort />
+					</main>
 					{/* <ThemePanel /> */}
 				</Theme>
 			</body>
