@@ -42,7 +42,9 @@ export const ImageLinkCard = ({
 						}}
 					/>
 				</AspectRatio>
-				<Box
+				<Flex
+					direction="column"
+					justify="center"
 					style={{
 						textAlign: "center",
 						textOverflow: "ellipsis"
@@ -59,7 +61,7 @@ export const ImageLinkCard = ({
 					>
 						{name}
 					</Heading>
-				</Box>
+				</Flex>
 			</Flex>
 		</Link>
 	);

@@ -14,6 +14,7 @@ export default async function IndexPage() {
 					const artistLink = `/artists/${artistSlug}?id=${_id}`;
 					return (
 						<ImageLinkCard
+							key={_id}
 							url={artistLink}
 							id={_id}
 							imageUrl={artistImageUrl}
