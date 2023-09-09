@@ -1,8 +1,12 @@
-import client from "../../sanity/client";
+import { Box, Flex, Grid, Heading } from "@radix-ui/themes";
+import client from "../../data/client";
+import { ImageLinkCard } from "../../components/ImageLinkCard";
+import { CardGridLayout } from "../../components/CardGridLayout";
+import { Release } from "../../types";
 
 async function getResources() {
 	const releases = await client.fetch(
-		`*[_type == "release"] { _id, name, artist->{ _id }, "imageUrl": image.asset->url }`
+		`*[_type == "release"] | order(releaseDate desc) { _id, name, artist->{ _id, name }, "imageUrl": image.asset->url, slug, links }`
 	);
 	return {
 		releases
@@ -12,26 +16,21 @@ async function getResources() {
 export default async function Releases() {
 	const { releases } = await getResources();
 	return (
-		<ul>
-			{releases.map(({ _id, imageUrl, name }) => {
-				const releaseImageUrl = `${imageUrl}?w=300`;
+		<CardGridLayout>
+			{releases.map(({ artist, _id, imageUrl, name, slug, links }: Release) => {
+				const { name: artistName } = artist;
+				const releaseImageUrl = `${imageUrl}?w=500`;
 				return (
-					<li key={_id}>
-						<span>{name}</span>
-						<div
-							style={{
-								display: "flex",
-								flexDirection: "column",
-								gap: "8px"
-							}}
-						>
-							<div>
-								<img src={releaseImageUrl} alt={name} />
-							</div>
-						</div>
-					</li>
+					<ImageLinkCard
+						key={slug.current}
+						id={_id}
+						imageUrl={releaseImageUrl}
+						name={`${name} - ${artistName}`}
+						url={links.find(({ title }) => title === "Bandcamp")?.url as string}
+						target="#"
+					/>
 				);
 			})}
-		</ul>
+		</CardGridLayout>
 	);
 }
